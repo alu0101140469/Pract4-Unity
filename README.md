@@ -45,7 +45,7 @@ He seleccionado una de las esferas verdes como destino fijo de las esferas de ti
 
 `NotificadorCilindro` detecta la entrada del objeto con tag `Player` en el trigger del cilindro. Cuando ocurre, publica el evento `CuboTocaCilindro` a través de `EventosJuego`. Esta clase centraliza las notificaciones para que el cilindro no tenga que conocer a cada esfera.
 
-Cada instancia de `UnidadReaccionEventos` se suscribe a los eventos cuando se activa y elimina las suscripciones cuando se desactiva. Al recibir el evento del cilindro, si la unidad es de tipo 1 utiliza el destino fijo asignado; si es de tipo 2 utiliza el cilindro. El movimiento se realiza en `FixedUpdate` mediante `Rigidbody.MovePosition`, y las unidades también giran gradualmente hacia la dirección en la que se desplazan. `MovimientoCuboKinematico` lee la entrada del jugador y mueve el cubo mediante su Rigidbody.
+Cada instancia de `UnidadReaccionEventos` se suscribe a los eventos cuando se activa y elimina las suscripciones cuando se desactiva. Al recibir el evento del cilindro, si la unidad es de tipo 1 utiliza el destino fijo asignado, si es de tipo 2 utiliza el cilindro. El movimiento se realiza en `FixedUpdate` mediante `Rigidbody.MovePosition`, y las unidades también giran gradualmente hacia la dirección en la que se desplazan. `MovimientoCuboKinematico` lee la entrada del jugador y mueve el cubo mediante su Rigidbody.
 
 ### Qué ocurre al ejecutar
 
@@ -89,7 +89,7 @@ También he añadido `CambiarColorAlTocarRecolectable` a las raíces de los huma
 
 ### Cómo funcionan los scripts
 
-`InteraccionesJugador` detecta el contacto del cubo con una unidad mediante `OnTriggerEnter` o `OnCollisionEnter`. Si la unidad es de tipo 2, publica el evento correspondiente; las unidades de tipo 1 lo reciben y se dirigen al escudo de tipo 1 asignado. Si el cubo contacta con una unidad de tipo 1, se publica el otro evento y las unidades de tipo 1 se dirigen al escudo de tipo 2 que se les ha asignado.
+`InteraccionesJugador` detecta el contacto del cubo con una unidad mediante `OnTriggerEnter` o `OnCollisionEnter`. Si la unidad es de tipo 2, publica el evento correspondiente, las unidades de tipo 1 lo reciben y se dirigen al escudo de tipo 1 asignado. Si el cubo contacta con una unidad de tipo 1, se publica el otro evento y las unidades de tipo 1 se dirigen al escudo de tipo 2 que se les ha asignado.
 
 El movimiento y la reacción de los humanoides continúan gestionándose mediante `UnidadReaccionEventos`. Por otro lado, `CambiarColorAlTocarRecolectable` detecta si una unidad entra en contacto con un objeto que contiene `ObjetoRecolectable`. Si el tipo de objetivo coincide con la configuración, cambia el color de los renderizadores del personaje y registra el cambio en la consola. El cambio se realiza una sola vez por unidad.
 
@@ -111,7 +111,7 @@ También he creado dos objetos vacíos que sirven como referencias: `PuntoTeletr
 
 Cuando el jugador entra en el trigger de `PuntoReferencia`, `ZonaReferencia` comprueba que el objeto que ha entrado tiene el tag `Player` y publica el evento `CuboEnZonaReferencia` mediante `EventosJuego`.
 
-Las instancias de `UnidadReaccionEventos` están suscritas a ese evento. Las unidades de tipo 1 asignan al Rigidbody la posición de `PuntoTeletransporteTipo1` y dejan de desplazarse hacia su destino anterior. Las unidades de tipo 2 activan la orientación hacia `ObjetivoMiradaTipo2`; en cada paso de física calculan la dirección horizontal y giran gradualmente hacia el objetivo.
+Las instancias de `UnidadReaccionEventos` están suscritas a ese evento. Las unidades de tipo 1 asignan al Rigidbody la posición de `PuntoTeletransporteTipo1` y dejan de desplazarse hacia su destino anterior. Las unidades de tipo 2 activan la orientación hacia `ObjetivoMiradaTipo2`, en cada paso de física calculan la dirección horizontal y giran gradualmente hacia el objetivo.
 
 ### Qué ocurre al ejecutar
 
@@ -123,19 +123,19 @@ Al pulsar Play y acercar el cubo a la zona de referencia, el trigger publica el 
 
 ### Cómo lo he realizado
 
-He guardado una copia de la escena y he distribuido escudos recolectables de los dos tipos. A cada escudo le he añadido `ObjetoRecolectable`; los objetos de tipo 1 tienen un valor de 5 puntos y los de tipo 2 tienen un valor de 10 puntos.
+He guardado una copia de la escena y he distribuido escudos recolectables de los dos tipos. A cada escudo le he añadido `ObjetoRecolectable`, los objetos de tipo 1 tienen un valor de 5 puntos y los de tipo 2 tienen un valor de 10 puntos.
 
 He creado un objeto vacío llamado `GestorPuntuacion` y le he añadido el script del mismo nombre. Después he asignado este objeto al campo `Gestor Puntuacion` de `InteraccionesJugador`, que está en el cubo. He configurado los colliders de los escudos para detectar la recogida y he comprobado que cada escudo tiene el tipo correcto.
 
 ### Cómo funcionan los scripts
 
-`InteraccionesJugador` procesa el contacto del jugador. Si el collider pertenece a una unidad, publica el evento correspondiente; si pertenece a un objeto con `ObjetoRecolectable` y hay un gestor de puntuación asignado, intenta recogerlo. `ObjetoRecolectable` comprueba que el objeto no se haya recogido anteriormente, devuelve el valor correspondiente y elimina el escudo de la escena.
+`InteraccionesJugador` procesa el contacto del jugador. Si el collider pertenece a una unidad, publica el evento correspondiente, si pertenece a un objeto con `ObjetoRecolectable` y hay un gestor de puntuación asignado, intenta recogerlo. `ObjetoRecolectable` comprueba que el objeto no se haya recogido anteriormente, devuelve el valor correspondiente y elimina el escudo de la escena.
 
 `GestorPuntuacion` recibe la cantidad de puntos, incrementa el total y lo muestra en la consola. La comprobación interna de recogida evita que el mismo objeto se contabilice más de una vez.
 
 ### Qué ocurre al ejecutar
 
-Al recoger un escudo de tipo 1, la puntuación aumenta en 5; al recoger uno de tipo 2, aumenta en 10. En la ventana Console aparece el total actualizado después de cada recogida y el escudo recogido desaparece de la escena.
+Al recoger un escudo de tipo 1, la puntuación aumenta en 5, al recoger uno de tipo 2, aumenta en 10. En la ventana Console aparece el total actualizado después de cada recogida y el escudo recogido desaparece de la escena.
 
 **Evidencia:** ![Ejercicio 5](pract4/media/ej5.gif) 
 
@@ -149,7 +149,7 @@ Después he seleccionado el objeto `GestorPuntuacion` y he arrastrado el compone
 
 ### Cómo funcionan los scripts
 
-`GestorPuntuacion` mantiene la puntuación en una variable y actualiza el texto cuando comienza la escena y cada vez que recibe una nueva cantidad de puntos. `InteraccionesJugador` y `ObjetoRecolectable` siguen siendo responsables de detectar y procesar la recogida; la UI solo representa el total actual.
+`GestorPuntuacion` mantiene la puntuación en una variable y actualiza el texto cuando comienza la escena y cada vez que recibe una nueva cantidad de puntos. `InteraccionesJugador` y `ObjetoRecolectable` siguen siendo responsables de detectar y procesar la recogida, la UI solo representa el total actual.
 
 ### Qué ocurre al ejecutar
 
@@ -199,7 +199,7 @@ Al iniciar la escena se pueden comprobar varias mecánicas en un mismo entorno: 
 
 He duplicado la escena del ejercicio 3 y la he guardado como `Ejercicio09_CuboFisico`. He mantenido los humanoides, los escudos y sus scripts, pero he cambiado la configuración del cubo. He desactivado o quitado `MovimientoCuboKinematico` y he añadido `MovimientoCuboFisico`.
 
-En el Rigidbody del cubo he desactivado `Is Kinematic`, activado `Use Gravity` y dejado el `Box Collider` como collider normal, sin `Is Trigger`. También he congelado las rotaciones X y Z para evitar que el cubo vuelque con facilidad. En los humanoides he utilizado colliders normales para los contactos físicos con el jugador; los triggers que sean necesarios para detectar proximidad se mantienen como detectores independientes.
+En el Rigidbody del cubo he desactivado `Is Kinematic`, activado `Use Gravity` y dejado el `Box Collider` como collider normal, sin `Is Trigger`. También he congelado las rotaciones X y Z para evitar que el cubo vuelque con facilidad. En los humanoides he utilizado colliders normales para los contactos físicos con el jugador, los triggers que sean necesarios para detectar proximidad se mantienen como detectores independientes.
 
 ### Cómo funcionan los scripts
 
