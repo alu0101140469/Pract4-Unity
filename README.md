@@ -155,7 +155,7 @@ Después he seleccionado el objeto `GestorPuntuacion` y he arrastrado el compone
 
 Al empezar la partida, la interfaz muestra una puntuación inicial de cero. Cada vez que recojo un escudo, el número se actualiza automáticamente. Por ejemplo, después de recoger un escudo de tipo 1 y otro de tipo 2, el texto muestra 15 puntos. La puntuación aparece tanto en la interfaz como en la consola.
 
-**Evidencia:** ![Ejercicio 1](pract6/media/ej6.gif) 
+**Evidencia:** ![Ejercicio 6](pract4/media/ej6.gif) 
 
 ## Ejercicio 7. Recompensa por cada 100 puntos
 
