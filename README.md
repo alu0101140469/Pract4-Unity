@@ -51,7 +51,7 @@ Cada instancia de `UnidadReaccionEventos` se suscribe a los eventos cuando se ac
 
 Al pulsar Play, muevo el cubo hasta entrar en el trigger del cilindro. El cilindro publica el evento y las esferas reaccionan sin que sea necesario que el cilindro las controle directamente: las rojas se dirigen hacia la esfera verde seleccionada y las verdes se acercan al cilindro. En la consola aparece un mensaje que confirma la activación del evento.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio01.gif`
+**Evidencia:** `pract4/media/ej1.gif`
 
 ## Ejercicio 2. Sustitución de las esferas por humanoides
 
@@ -74,7 +74,7 @@ En este ejercicio se reutilizan `EventosJuego`, `NotificadorCilindro`, `Movimien
 
 Al pulsar Play y llevar el cubo hasta el cilindro, los humanoides responden al evento: las unidades de tipo 1 se dirigen al destino seleccionado y las de tipo 2 al cilindro. De esta manera he comprobado que la lógica programada se puede reutilizar con modelos 3D diferentes sin tener que escribir de nuevo el comportamiento.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio02.gif`
+**Evidencia:** `pract4/media/ej2.gif`
 
 ## Ejercicio 3. Grupos de humanoides y escudos de dos tipos
 
@@ -96,7 +96,7 @@ El movimiento y la reacción de los humanoides continúan gestionándose mediant
 
 Al ejecutar la escena, si el cubo toca un humanoide de tipo 2, las unidades tipo 1 se desplazan hacia el escudo de tipo 1 seleccionado. Si el cubo toca un humanoide de tipo 1, las unidades tipo 1 se dirigen hacia el escudo de tipo 2 asignado. Cuando un humanoide toca un escudo del tipo configurado, cambia de color. Esto permite observar tanto la comunicación mediante eventos como la detección de contactos entre personajes y objetos.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio03.gif`
+**Evidencia:** `pract4/media/ej3.gif`
 
 ## Ejercicio 4. Zona de referencia, teletransporte y orientación
 
@@ -116,7 +116,7 @@ Las instancias de `UnidadReaccionEventos` están suscritas a ese evento. Las uni
 
 Al pulsar Play y acercar el cubo a la zona de referencia, el trigger publica el evento. Las unidades de tipo 1 se teletransportan al punto que he seleccionado y las unidades de tipo 2 giran para mirar hacia el objeto de orientación. El comportamiento se activa por proximidad y no requiere que el cubo empuje físicamente el punto de referencia.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio04.gif`
+**Evidencia:** `pract4/media/ej4.gif`
 
 ## Ejercicio 5. Recogida de escudos y puntuación en consola
 
@@ -136,7 +136,7 @@ He creado un objeto vacío llamado `GestorPuntuacion` y le he añadido el script
 
 Al recoger un escudo de tipo 1, la puntuación aumenta en 5; al recoger uno de tipo 2, aumenta en 10. En la ventana Console aparece el total actualizado después de cada recogida y el escudo recogido desaparece de la escena.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio05.gif`
+**Evidencia:** `pract4/media/ej5.gif`
 
 ## Ejercicio 6. Interfaz de usuario para mostrar la puntuación
 
@@ -154,7 +154,7 @@ Después he seleccionado el objeto `GestorPuntuacion` y he arrastrado el compone
 
 Al empezar la partida, la interfaz muestra una puntuación inicial de cero. Cada vez que recojo un escudo, el número se actualiza automáticamente. Por ejemplo, después de recoger un escudo de tipo 1 y otro de tipo 2, el texto muestra 15 puntos. La puntuación aparece tanto en la interfaz como en la consola.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio06.gif`
+**Evidencia:** `pract4/media/ej6.gif`
 
 ## Ejercicio 7. Recompensa por cada 100 puntos
 
@@ -172,7 +172,7 @@ En el componente `GestorPuntuacion` he asignado `TextoRecompensa` al campo `Text
 
 Al recoger escudos hasta alcanzar 100 puntos, aparece el mensaje de la primera recompensa en la interfaz y en la consola. Si continúo recogiendo objetos hasta llegar a 200 puntos, el mensaje se actualiza para indicar la siguiente recompensa. Para comprobarlo he colocado suficientes objetos en la escena como para superar el primer umbral.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio07.gif`
+**Evidencia:** `pract4/media/ej7.gif`
 
 ## Ejercicio 8. Escena de prototipo que combina las mecánicas
 
@@ -190,7 +190,7 @@ En esta escena funcionan conjuntamente los scripts ya utilizados. `NotificadorCi
 
 Al iniciar la escena se pueden comprobar varias mecánicas en un mismo entorno: el jugador activa el cilindro y la zona de referencia, contacta con humanoides de ambos tipos y recoge escudos. Los grupos reaccionan según sus eventos, el jugador acumula puntos y la interfaz muestra el total y las recompensas alcanzadas. Esta escena sirve para comprobar que los componentes funcionan conjuntamente y que las referencias asignadas en el Inspector son correctas.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio08.gif`
+**Evidencia:** `pract4/media/ej8.gif`
 
 ## Ejercicio 9. Repetir el ejercicio 3 con el cubo controlado por física
 
@@ -210,4 +210,4 @@ En el Rigidbody del cubo he desactivado `Is Kinematic`, activado `Use Gravity` y
 
 Al iniciar la escena, el cubo se mueve con aceleración y responde a la gravedad y a las colisiones del entorno. Al entrar en contacto con un humanoide tipo 2, las unidades tipo 1 se dirigen hacia el escudo de tipo 1 seleccionado. Al contactar con una unidad tipo 1, se activa el otro evento y las unidades tipo 1 se desplazan hacia el escudo de tipo 2 asignado. Así he comprobado que la misma mecánica se puede utilizar con el cubo controlado mediante un Rigidbody dinámico.
 
-**Evidencia:** `Assets/Evidencias/Ejercicio09.gif`
+**Evidencia:** `pract4/media/ej9.gif`
